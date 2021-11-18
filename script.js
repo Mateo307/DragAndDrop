@@ -22,12 +22,14 @@ let backlogListArray = [];
 let progressListArray = [];
 let completeListArray = [];
 let onHoldListArray = [];
-let listArrays = []
+let listArrays = [];
 
 // Функциональность для перетаскивания
 let draggedItem;
 let dragging = false;
 let currentColumn;
+let focusColumn;
+let focusId;
 
 // обработчик начала
 const drag = (e) => {
@@ -191,3 +193,22 @@ function hideInputBox(column){
     addItemContainers[column].style.display = 'none';
     addToColumn(column);
 }
+//Удаление элементов
+const deleteColumn = function () {
+    listArrays[focusColumn].splice(focusId,1);
+    updateDOM();
+}
+listColumns.forEach((elem,index)=>{
+    elem.addEventListener("focusout",(e) =>{
+        if(e.target.textContent == ""){
+            deleteColumn()
+        }
+    })
+})
+
+listColumns.forEach((elem,index)=>{
+    elem.addEventListener("focusin",(e) =>{
+        focusColumn = index;
+        focusId = e.target.id;
+    })
+})
