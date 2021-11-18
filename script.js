@@ -212,3 +212,15 @@ listColumns.forEach((elem,index)=>{
         focusId = e.target.id;
     })
 })
+
+//сохранение
+const savedText = function(el,index){
+    listArrays[index][el.target.id] = el.target.textContent;
+    updateSavedColumns();
+}
+
+listColumns.forEach((ul,index)=>{
+    ul.addEventListener("focusout", (e) => {
+        savedText(e,index);
+    })
+});
