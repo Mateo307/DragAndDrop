@@ -22,7 +22,7 @@ let backlogListArray = [];
 let progressListArray = [];
 let completeListArray = [];
 let onHoldListArray = [];
-let listArrays = [];
+let listArrays = []
 
 // Функциональность для перетаскивания
 let draggedItem;
